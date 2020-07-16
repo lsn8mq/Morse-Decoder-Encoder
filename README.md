@@ -9,7 +9,7 @@ This app will allow the user to quickly decode/encode objects in morse code.
 
 ## Technologies
 ### This project utilizes:
--C++
+-C++ <br />
 -Binary Trees and Maps
 
 
