@@ -14,7 +14,14 @@ This app will allow the user to quickly decode/encode objects in morse code.
 
 
 ### Summary:
-- The project uses an external text file that includes every character in the alphabet followed by its corresponding morse code value
+- The project uses an external text file that includes every character in the alphabet followed by its corresponding morse code value <br />
+- The app will be able to use an encode method to convert a string from it's alphabetic representation to it's morse code equivalent. This encode method will use a map to quickly access the morse code value of the letter that is assigned as it's "key" <br />
+
+
+
+### TODO:
+- Write an insert method that builds the binary tree from the text file <br />
+- Create a method that decodes a word of morse code values and returns it's alphabetic equivalence
 
 
 
