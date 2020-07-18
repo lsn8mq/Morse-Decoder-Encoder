@@ -17,12 +17,33 @@ public:
 		/*This method will be called recursively as the current_root is 
 		updated everytime the Node to be inserted is pushed down
 		the height of the Tree*/
+		{
+			if (curr_root == nullptr) {
+			Morse_Node *letter = new Morse_Node(C, Str);
+			newNode = letter;
+		}
 
+		else {
+			if ((C < newNode->getChar())) {
+				insert((newNode)->getLeft(), C, Str);
+			}
+		else if(C > newNode->getChar()){
+			insert((newNode)->getRight(), C, Str);
 	}
-	void insert(char letter, string code) { // This is the wrapper insert method
+			
+			
+			
+	void insert(char letter, string code) 
+	{ // This is the wrapper insert method
+    		insert(pHead, newC, newStr);
+	}
 
-		
+	void print()
+	{
+    		print(pHead);
 	}
+			
+			
 	void build_tree(istream& read_in) {
 		
 		string line;
