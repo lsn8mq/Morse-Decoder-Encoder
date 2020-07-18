@@ -49,6 +49,17 @@ public:
 		All it does is go through char by char through the message and 
 		look up each char in the code_map and return a string where
 		each char has been replaced by its code equivalent*/
+
+		string coded_message;
+
+		string::iterator it;
+		for (it = message.begin(); it != message.end(); it++) {
+			char curr_char = *it;
+			string curr_code = code_map[curr_char];
+			coded_message = coded_message + curr_code + " ";
+		}
+
+		return coded_message;
 		 
 	}
 	void decode(string coded_message) {

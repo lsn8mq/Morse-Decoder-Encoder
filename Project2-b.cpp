@@ -19,7 +19,10 @@ int main()
 	build tree function in the Morse_Tree class*/
 
 	my_tree.print_map();
+	string word = "hello";
+	string coded_word = my_tree.encode(word);
 
+	cout << "Word: " << word << ", Coded Word: " << coded_word << endl;
 	
 	
 	
