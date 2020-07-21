@@ -7,50 +7,47 @@ using namespace std;
 
 class Morse_Tree {
 private:
-	Morse_Node *root;
+	Morse_Node* root;
 	map<char, string> code_map;
-	
 
 public:
-	
-	Morse_Tree(){
-
-		root = NULL;
 
 
-	}
-
-	void insert(Morse_Node* &curr_root, char letter, string code) { 
+	void insert(Morse_Node* curr_root, char letter, string code) { 
+		
+		insert (pHead, newLetter,newStrng);
+			
 		/*This method will be called recursively as the current_root is 
 		updated everytime the Node to be inserted is pushed down
 		the height of the Tree*/
-		
-		
-		char code_segment = code[0];
-		
-		if (curr_root == NULL) {
-			curr_root = new Morse_Node();
-			
-		}
-		
-		if (code.size() == 0) {
-			curr_root->letter = letter;
-		}
-		else {
-			if (code_segment == '.') {
-				insert(curr_root->left, letter, code.substr(1));
-
-			}
-			if (code_segment == '_') {
-				insert(curr_root->right, letter, code.substr(1));
-
-			}
-		}
-
 
 	}
-	void build_tree(istream& read_in) {
+	
+	void print()
+	{
+		print (pHead);
+	
+	}
+	
+	void insert(char letter, string code) { // This is the wrapper insert method
+		if (newNode == nullptr) {
+			Morse_Node *newNode = new NewNode(letter, Str)
+				newNode = newNode;
+		}
+		else {
+			if ((C < newNode->getChar())) 
+				insert((newNode)->getLeft(), Char, Str);
+		}
+		else if(Char > newNode->getChar()){
+			insert((newNode)->getRight(), Char, Str);
+		}
+	}
+}
+	
+
 		
+	}
+	void build_tree(istream& read_in) {
 		
 		string line;
 		while (read_in >> line) {
@@ -60,8 +57,8 @@ public:
 		//^We should try to include some error checking for these
 
 
-			insert(root,letter, code);
-			
+		//	insert(letter, code);
+
 			/*This can be where the insert wrapper can be called
 			I have not encountered any errors when reading the file so i
 			can HOPE that there should not be any issues when passing the 
@@ -93,7 +90,9 @@ public:
 		/*This will definitely be the more complicated one, but i think
 		between the slides, googling, and stack overflow, it should be 
 		fairly straight up*/
-	}
+		
+		
+}
 
 	/*I was thinking that maybe we would like to include a delete method
 	and a function to print the tree so we can test it properly before we start 
@@ -105,24 +104,6 @@ public:
 		for (map<char, string>::iterator it = code_map.begin(); it != code_map.end(); ++it) {
 			cout << "letter: " << it->first << " code: " << it->second << endl;
 		}
-	}
-
-	void print_tree() {
-		print_tree(root);
-	}
-
-	void print_tree(Morse_Node *& curr_root) {  //prints the tree using preorder traversal
-		if (curr_root == NULL) {
-			return;
-		}
-		
-		print_tree(curr_root->left);
-		
-		cout << curr_root->to_string();
-		
-		print_tree(curr_root->right);
-
-
 	}
 
 };
