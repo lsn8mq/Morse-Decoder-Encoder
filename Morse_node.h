@@ -7,14 +7,20 @@ using namespace std;
 
 
 class Morse_Node {
-private:
-	char letter;
-	
-	Morse_Node* left;
-	Morse_Node* right;
-
 
 public:
+	char letter;
+
+	Morse_Node* left;
+	Morse_Node* right;
+	Morse_Node() {
+
+	}
+	Morse_Node(const Morse_Node& other) {
+		letter = other.letter;
+		left = other.left;
+		right = other.right;
+	}
 	Morse_Node(char new_letter) {
 		letter = new_letter;
 		left = NULL;
