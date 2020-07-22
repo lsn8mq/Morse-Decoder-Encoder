@@ -29,7 +29,6 @@ public:
 		char code_segment = code[0];
 		
 		if (curr_root == NULL) {
-			/*Base case for the recursive function*/
 			curr_root = new Morse_Node();
 			
 		}
@@ -63,7 +62,10 @@ public:
 
 			insert(root,letter, code);
 			
-			
+			/*This can be where the insert wrapper can be called
+			I have not encountered any errors when reading the file so i
+			can HOPE that there should not be any issues when passing the 
+			letter and the code to the insert function*/
 			code_map[letter] = code;
 			//cout << letter << " " << code << endl;
 		}
@@ -78,67 +80,42 @@ public:
 		string coded_message;
 
 		string::iterator it;
-		for (it = message.begin(); it != message.end(); it++) {		
+		for (it = message.begin(); it != message.end(); it++) {
 			char curr_char = *it;
-			string curr_code = code_map[curr_char];					// simple stores each letter and its corresponding code into the map
+			string curr_code = code_map[curr_char];
 			coded_message = coded_message + curr_code + " ";
 		}
 
 		return coded_message;
 		 
 	}
-	string decode(string coded_message) {
-		/*This method parses through the string of morse code
-		and will return its alphanumeric equivalence */
-		string decoded_message;
-
-		istringstream message(coded_message);
-		do {
-			string word;
-			message >> word;
-			
-			char letter= find_letter(root, word);
-			/*^calls the function with the tree's root as the starting
-			point */
-			decoded_message+=letter;
-
-		} while (message);
-
+	void decode(string coded_message) {
+		/*This will definitely be the more complicated one, but i think
+		between the slides, googling, and stack overflow, it should be 
+		fairly straight up*/
 		
-		return decoded_message;
-	}
-	char find_letter(Morse_Node *& curr_root,string code) {
-		/*Recursive function that traverses through the tree by parsing 
-		through the morse code values*/
-		
-		if (code.size() == 0) {
-			/*Base case for the recursive call. Since this method
-			cuts off the first char of the morse code every time the
-			method is called.*/
-			char ret = curr_root->letter;
-			
-			
-			return ret;
+		{
+			char letter;                  // next message bit
+			MorseNodePointer p; // pointer to trace path in decoding tree
+			for(;;)
+			{
+				p = myRoot;
+				while (p->left != 0 || p->right != 0) {
+					messageIn >> bit;
+					if ( messageIn.eof() ) return; cout << letter;
+					if (letter == '0')
+						p = p->left;
+					else if (letter == '1')
+						p = p->right; else
+							cerr << " " << bit << " -- ignored\n"; }
+				cout << "--" << p->data << endl; }
 		}
-		char code_segment = code[0];
-		
-		if (curr_root == NULL) {
-			cout << "Invalid code" << endl;
-		}
-		else {
-			if (code_segment == '.') {
-				/*Determines if the traversal needs to go left*/
-				return find_letter(curr_root->left, code.substr(1));
-			}
-			if (code_segment == '_') {
-				/*Determines if the traversal needs to go right*/
-				return find_letter(curr_root->right, code.substr(1));
-			}
-		}
-		
 	}
 
-	
+	/*I was thinking that maybe we would like to include a delete method
+	and a function to print the tree so we can test it properly before we start 
+	trying to play around with the decoding*/
+
 	void print_map() {
 		/*This function is only for testing to make sure that the map was
 		properly constructed from the contents of the file*/
