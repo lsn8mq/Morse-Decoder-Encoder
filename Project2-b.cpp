@@ -25,8 +25,11 @@ int main()
 	//cout << "Word: " << word << ", Coded Word: " << coded_word << endl;
 	
 	
-	my_tree.print_tree();
-	
+	string decoded_message=my_tree.decode(coded_word);
+	//my_tree.print_tree();
+
+	cout << "Word: " << word << ", Coded Word: " << coded_word << endl;
+	cout << "Coded word: " << coded_word << " decoded word: " << decoded_message << endl;
 	return 0;
 }
 
